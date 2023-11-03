@@ -5,7 +5,9 @@
 
 library(officer)
 
-probType <- "*" # "+", "-", or "x"
+# what type of problem should the slides be?
+# valid types are in c("+", "-", or "x")
+probType <- "x" 
 
 max_X <- 15
 max_Y <- 9
@@ -21,7 +23,7 @@ for (i in seq(1, numSlides, 2)) {
   
   # Draw random number for problem eg) x + y
   x <- sample(1:max_X, 1)
-  limit <- min(maxY, x)
+  limit <- min(max_Y, x)
   y <- sample(1:limit, 1)
   
   # Find solution based on probType
