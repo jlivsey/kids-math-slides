@@ -7,10 +7,10 @@ library(officer)
 
 # what type of problem should the slides be?
 # valid types are in c("+", "-", or "x")
-probType <- "x" 
+probType <- "-" 
 
-max_X <- 15
-max_Y <- 9
+max_X <- 30
+max_Y <- 12
 numProblems <- 25
 textSize <- 90
 
@@ -23,7 +23,11 @@ for (i in seq(1, numSlides, 2)) {
   
   # Draw random number for problem eg) x + y
   x <- sample(1:max_X, 1)
-  limit <- min(max_Y, x)
+  if (probType == "-") {
+      limit <- min(max_Y, x)
+  } else{
+      limit <- max_Y
+  }
   y <- sample(1:limit, 1)
   
   # Find solution based on probType
@@ -57,4 +61,8 @@ for (i in seq(1, numSlides, 2)) {
   
 }
 
+# Set working directory
+setwd(getSrcDirectory(function(){})[1])
+
+# Save powerpoint document to working directory
 print(doc, "./problems.pptx")
